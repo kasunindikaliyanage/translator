@@ -1,5 +1,5 @@
 #include <iostream>
-#include "headers/lexer.h"
+#include "lexer/lexer.h"
 
 int main()
 {

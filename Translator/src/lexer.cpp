@@ -1,4 +1,4 @@
-#include "../headers/lexer.h"
+#include "lexer/lexer.h"
 
 lexer::lexer(std::string file_name)
 {
@@ -48,17 +48,17 @@ std::shared_ptr<token> lexer::scan()
 	switch (current_char)
 	{
 	case '&':
-		if (compare_next_char('&')) return AND_sptr; else return std::make_shared<token>("&", tag_types::NOT_DEFINED) ;
+		if (compare_next_char('&')) return AND_sptr; else return std::make_shared<token>("&", TAG::NOT_DEFINED) ;
 	case '|':
-		if (compare_next_char('|')) return OR_sptr; else return std::make_shared<token>("|", tag_types::NOT_DEFINED);
+		if (compare_next_char('|')) return OR_sptr; else return std::make_shared<token>("|", TAG::NOT_DEFINED);
 	case '=':
-		if (compare_next_char('=')) return EQ_sptr; else return std::make_shared<token>("=", tag_types::NOT_DEFINED);
+		if (compare_next_char('=')) return EQ_sptr; else return std::make_shared<token>("=", TAG::NOT_DEFINED);
 	case '!':
-		if (compare_next_char('=')) return NEQ_sptr; else return std::make_shared<token>("!", tag_types::NOT_DEFINED);
+		if (compare_next_char('=')) return NEQ_sptr; else return std::make_shared<token>("!", TAG::NOT_DEFINED);
 	case '<':
-		if (compare_next_char('=')) return LE_sptr; else return std::make_shared<token>("<", tag_types::NOT_DEFINED);
+		if (compare_next_char('=')) return LE_sptr; else return std::make_shared<token>("<", TAG::NOT_DEFINED);
 	case '>':
-		if (compare_next_char('=')) return GE_sptr; else return std::make_shared<token>(">", tag_types::NOT_DEFINED);
+		if (compare_next_char('=')) return GE_sptr; else return std::make_shared<token>(">", TAG::NOT_DEFINED);
 	}
 
 	if (std::isdigit(current_char))
@@ -71,7 +71,7 @@ std::shared_ptr<token> lexer::scan()
 		} while (std::isdigit(current_char));
 
 		if (current_char != '.')
-			return std::make_shared<token>(v, tag_types::NUM);
+			return std::make_shared<token>(v, TAG::NUM);
 
 		float r = v;
 		float d = 10;
@@ -85,7 +85,7 @@ std::shared_ptr<token> lexer::scan()
 			r = r + std::atoi(&current_char) / d;
 			d = d * 10;
 		}
-		return std::make_shared<token>(r,tag_types::REAL);
+		return std::make_shared<token>(r,TAG::REAL);
 	}
 
 	if (std::isalpha(current_char))
@@ -105,12 +105,12 @@ std::shared_ptr<token> lexer::scan()
 		else
 		{
 			reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>
-				(temp, std::make_shared<token>(temp, tag_types::ID)));
+				(temp, std::make_shared<token>(temp, TAG::ID)));
 			return reserve_words.find(temp)->second;
 		}
 	}
 
-	auto sptr=  std::make_shared<token>(current_char, tag_types::NOT_DEFINED);
+	auto sptr=  std::make_shared<token>(current_char, TAG::NOT_DEFINED);
 	current_char = ' ';
 	return sptr;
 }

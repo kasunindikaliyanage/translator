@@ -2,7 +2,7 @@
 
 #include <string>
 
-enum tag_types {
+enum TAG {
 	INITIAL = 0,
 	NOT_DEFINED = 100,
 	AND = 256,
@@ -31,11 +31,11 @@ class token {
 public:
 
 	std::string value = "";
-	tag_types type= tag_types::INITIAL;
+	TAG type= TAG::INITIAL;
 	int ivalue;
 	float fvalue;
 
-	token(std::string, tag_types);
-	token(int, tag_types);
-	token(float, tag_types);
+	token(std::string, TAG);
+	token(int, TAG);
+	token(float, TAG);
 };

@@ -91,6 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,7 +152,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\lexer.cpp" />
+    <ClCompile Include="src\token.cpp" />
     <ClCompile Include="Translator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\lexer\token.h" />
+    <ClInclude Include="headers\lexer\lexer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="tests\test1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
