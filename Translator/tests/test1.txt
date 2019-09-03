@@ -1,0 +1,11 @@
+int a = 0;
+int b = 20;
+float x = 29.345;
+
+int hello()
+{
+	while(true)
+	{
+		b= a +5;
+	}
+}
