@@ -29,13 +29,6 @@ enum TAG {
 
 class token {
 public:
-
-	std::string value = "";
 	TAG type= TAG::INITIAL;
-	int ivalue;
-	float fvalue;
-
-	token(std::string, TAG);
-	token(int, TAG);
-	token(float, TAG);
+	token(TAG);
 };
