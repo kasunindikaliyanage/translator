@@ -2,7 +2,7 @@
 
 #include <string>
 
-enum TAG {
+enum class TAG {
 	INITIAL = 0,
 	NOT_DEFINED = 100,
 	AND = 256,
@@ -28,7 +28,15 @@ enum TAG {
 };
 
 class token {
+
 public:
+	const char* str;
+	int int_value = 0;
+	double double_value = 0.0;
+
 	TAG type= TAG::INITIAL;
 	token(TAG);
+	token(const char*, TAG );
+	token(int, TAG);
+	token(double, TAG);
 };

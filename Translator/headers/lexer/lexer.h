@@ -7,52 +7,52 @@
 
 #include "token.h"
 
-//const static std::shared_ptr<token> AND_sptr = std::make_shared<token>("&&", TAG::AND);
-//const static std::shared_ptr<token> OR_sptr = std::make_shared<token>("||", TAG::OR);
-//const static std::shared_ptr<token> EQ_sptr = std::make_shared<token>("==", TAG::EQ);
-//const static std::shared_ptr<token> NEQ_sptr = std::make_shared<token>("!=", TAG::NEQ);
-//const static std::shared_ptr<token> LE_sptr = std::make_shared<token>("<=", TAG::LE);
-//const static std::shared_ptr<token> GE_sptr = std::make_shared<token>(">=", TAG::GE);
-//const static std::shared_ptr<token> IF_sptr = std::make_shared<token>("if", TAG::IF);
-//const static std::shared_ptr<token> ELSE_sptr = std::make_shared<token>("else", TAG::ELSE);
-//const static std::shared_ptr<token> BREAK_sptr = std::make_shared<token>("break", TAG::BREAK);
-//const static std::shared_ptr<token> WHILE_sptr = std::make_shared<token>("while", TAG::WHILE);
-//const static std::shared_ptr<token> DO_sptr = std::make_shared<token>("do", TAG::DO);
-//const static std::shared_ptr<token> TRUE_sptr = std::make_shared<token>("true", TAG::TRUE);
-//const static std::shared_ptr<token> FLASE_sptr = std::make_shared<token>("false", TAG::FALSE);
-//const static std::shared_ptr<token> INT_sptr = std::make_shared<token>("int", TAG::BASIC);
-//const static std::shared_ptr<token> FLOAT_sptr = std::make_shared<token>("float", TAG::BASIC);
-//const static std::shared_ptr<token> CHAR_sptr = std::make_shared<token>("char", TAG::BASIC);
-//const static std::shared_ptr<token> BOOL_sptr = std::make_shared<token>("bool", TAG::BASIC);
+static token AND_sptr	("&&", TAG::AND);
+static token OR_sptr	("||", TAG::OR);
+static token EQ_sptr	("==", TAG::EQ);
+static token NEQ_sptr	("!=", TAG::NEQ);
+static token LE_sptr	("<=", TAG::LE);
+static token GE_sptr	(">=", TAG::GE);
+static token IF_sptr	("if", TAG::IF);
+static token ELSE_sptr("else", TAG::ELSE);
+static token BREAK_sptr("break", TAG::BREAK);
+static token WHILE_sptr("while", TAG::WHILE);
+static token DO_sptr	("do", TAG::DO);
+static token TRUE_sptr("true", TAG::TRUE);
+static token FLASE_sptr("false", TAG::FALSE);
+static token INT_sptr	("int", TAG::BASIC);
+static token FLOAT_sptr("float", TAG::BASIC);
+static token CHAR_sptr("char", TAG::BASIC);
+static token BOOL_sptr("bool", TAG::BASIC);
 
 class lexer {
 
 private:
 	std::ifstream input_stream;
-	char current_char = ' ';
+	char current_char;
 	int number_of_lines = 0;
-	std::map<std::string,std::shared_ptr<token>> reserve_words;
+	std::map<std::string,token> reserve_words;
 
 	void init()
 	{
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("if", IF_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("else", ELSE_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("while", WHILE_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("do", DO_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("break", BREAK_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("true", TRUE_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("false", FLASE_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("int", INT_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("float", FLOAT_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("char", CHAR_sptr));
-		//reserve_words.insert(std::pair<std::string, std::shared_ptr<token>>("bool", BOOL_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("if"), IF_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("else"), ELSE_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("while"), WHILE_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("do"), DO_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("break"), BREAK_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("true"), TRUE_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("false"), FLASE_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("int"), INT_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("float"), FLOAT_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("char"), CHAR_sptr));
+		reserve_words.insert(std::pair<std::string, token>(std::string("bool"), BOOL_sptr));
 	}
 
 public:
 	bool isEOF = false;
 	lexer(std::string file_name);
 
-	std::shared_ptr<token> scan();
+	token* scan();
 
 	void read_next();
 	bool compare_next_char(char next);

@@ -152,13 +152,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\array.cpp" />
     <ClCompile Include="src\lexer.cpp" />
+    <ClCompile Include="src\num.cpp" />
+    <ClCompile Include="src\real.cpp" />
     <ClCompile Include="src\token.cpp" />
+    <ClCompile Include="src\type.cpp" />
+    <ClCompile Include="src\word.cpp" />
     <ClCompile Include="Translator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\lexer\array.h" />
+    <ClInclude Include="headers\lexer\num.h" />
+    <ClInclude Include="headers\lexer\real.h" />
     <ClInclude Include="headers\lexer\token.h" />
     <ClInclude Include="headers\lexer\lexer.h" />
+    <ClInclude Include="headers\lexer\type.h" />
+    <ClInclude Include="headers\lexer\word.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="tests\test1.txt" />
