@@ -67,7 +67,11 @@ class SimpleLexer
 public:
 	bool isEOF = false;
 
-	SimpleLexer(std::string file_name);
+	SimpleLexer(std::string file_name)
+	{
+		isEOF = false;
+		input_stream.open(file_name);
+	}
 
 	Token* getNextToken()
 	{
