@@ -155,6 +155,7 @@
     <ClCompile Include="src\array.cpp" />
     <ClCompile Include="src\lexer.cpp" />
     <ClCompile Include="src\num.cpp" />
+    <ClCompile Include="src\parser.cpp" />
     <ClCompile Include="src\real.cpp" />
     <ClCompile Include="src\token.cpp" />
     <ClCompile Include="src\type.cpp" />
@@ -169,6 +170,8 @@
     <ClInclude Include="headers\lexer\lexer.h" />
     <ClInclude Include="headers\lexer\type.h" />
     <ClInclude Include="headers\lexer\word.h" />
+    <ClInclude Include="headers\parser\context.h" />
+    <ClInclude Include="headers\parser\parser.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="tests\test1.txt" />
